@@ -43,53 +43,103 @@ export default function HomePage() {
 
   return (
     <div style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 20px" }}>
-      {/* ================= HERO ================= */}
-      <section
+     {/* ================= HERO ================= */}
+<section
+  className="hero"
+  style={{
+    backgroundImage: "url('/produk/hero-background.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    minHeight: "80vh",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 24,
+    marginBottom: 60,
+    padding: "1.5rem",
+  }}
+>
+  <div
+    className="hero-card"
+    style={{
+      maxWidth: 640,
+      width: "100%",
+      background: "rgba(255,255,255,0.88)",
+      padding: "2.8rem 2.2rem",
+      borderRadius: 22,
+      backdropFilter: "blur(8px)",
+      textAlign: "center",
+      boxShadow: "0 12px 30px rgba(0,0,0,0.15)",
+    }}
+  >
+    <h2
+      style={{
+        color: "#2e7d32",
+        fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
+        fontWeight: 700,
+        marginBottom: "1rem",
+        lineHeight: 1.3,
+      }}
+    >
+      Snack Gizi Lokal untuk <br />
+      Generasi Bebas Stunting
+    </h2>
+
+    <p
+      style={{
+        color: "#444",
+        fontSize: "1rem",
+        lineHeight: 1.6,
+        marginBottom: "2rem",
+      }}
+    >
+      GrowBar adalah snack sehat berbasis pangan lokal Indonesia untuk mendukung
+      tumbuh kembang anak dan ibu hamil pada masa emas 1.000 HPK.
+    </p>
+
+    <div
+      className="cta"
+      style={{
+        display: "flex",
+        gap: "1rem",
+        justifyContent: "center",
+        flexWrap: "wrap",
+      }}
+    >
+      <button
         style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          marginBottom: 60,
-          padding: "80px 20px",
-          backgroundColor: "#a3c939",
-          borderRadius: 20,
+          backgroundColor: "#8bc34a",
+          color: "#1b5e20",
+          border: "none",
+          padding: "0.75rem 1.7rem",
+          borderRadius: 999,
+          fontWeight: 600,
+          cursor: "pointer",
         }}
+        onClick={() => (window.location.href = "/pesan")}
       >
-        <h2 style={{ fontSize: "2.2rem", lineHeight: 1.3, marginBottom: 16, color: "#2f7d32" }}>
-          Snack Gizi Lokal untuk <br />
-          Generasi Bebas Stunting
-        </h2>
+        Pesan GrowBar
+      </button>
 
-        <p
-          style={{
-            fontSize: 18,
-            lineHeight: 1.6,
-            maxWidth: 600,
-            marginBottom: 32,
-            color: "white",
-            textShadow: "1px 1px 2px rgba(0,0,0,0.2)",
-          }}
-        >
-          GrowBar adalah snack sehat berbasis pangan lokal Indonesia untuk mendukung
-          tumbuh kembang anak dan ibu hamil pada masa emas 1.000 HPK.
-        </p>
+      <button
+        style={{
+          backgroundColor: "#2e7d32",
+          color: "#fff",
+          border: "none",
+          padding: "0.75rem 1.7rem",
+          borderRadius: 999,
+          fontWeight: 600,
+          cursor: "pointer",
+        }}
+        onClick={() => (window.location.href = "/tracking")}
+      >
+        Mulai Tracking
+      </button>
+    </div>
+  </div>
+</section>
 
-        <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-          <Link href="/pesan">
-            <button style={{ ...buttonStyle, backgroundColor: "#2f7d32", color: "white" }}>
-              Pesan GrowBar
-            </button>
-          </Link>
-          <button
-            style={{ ...buttonStyle, backgroundColor: "white", color: "#2f7d32" }}
-            onClick={() => router.push("/tracking")}
-          >
-            Mulai Tracking
-          </button>
-        </div>
-      </section>
 
       {/* ================= VALUE ================= */}
       <section style={{ marginBottom: 60 }}>
@@ -223,3 +273,66 @@ export default function HomePage() {
     </div>
   );
 }
+
+const hero: any = {
+  hero: {
+    minHeight: "90vh",
+    backgroundImage: "url('/produk/hero-background.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "1.5rem",
+  },
+
+  overlayCard: {
+    backgroundColor: "rgba(255,255,255,0.92)",
+    borderRadius: "20px",
+    padding: "2.5rem",
+    maxWidth: "520px",
+    width: "100%",
+    textAlign: "center",
+    boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
+  },
+
+  title: {
+    color: "#2e7d32",
+    fontSize: "clamp(1.5rem, 3vw, 2.2rem)",
+    fontWeight: "700",
+    marginBottom: "1rem",
+  },
+
+  desc: {
+    color: "#444",
+    fontSize: "1rem",
+    lineHeight: "1.6",
+    marginBottom: "1.8rem",
+  },
+
+  buttonGroup: {
+    display: "flex",
+    gap: "1rem",
+    justifyContent: "center",
+    flexWrap: "wrap",
+  },
+
+  primaryBtn: {
+    backgroundColor: "#8bc34a",
+    border: "none",
+    padding: "0.75rem 1.5rem",
+    borderRadius: "999px",
+    fontWeight: "600",
+    cursor: "pointer",
+  },
+
+  secondaryBtn: {
+    backgroundColor: "#2e7d32",
+    color: "#fff",
+    border: "none",
+    padding: "0.75rem 1.5rem",
+    borderRadius: "999px",
+    fontWeight: "600",
+    cursor: "pointer",
+  },
+};
