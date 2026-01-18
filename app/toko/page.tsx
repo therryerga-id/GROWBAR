@@ -26,7 +26,7 @@ export default function TokoPage() {
               <li>✔ Cocok untuk anak & ibu hamil</li>
             </ul>
 
-            <strong>Rp 7.200 / pcs</strong>
+            <strong>Rp 7.500 / pcs</strong>
 
             <button style={{ marginTop: "1rem" }}>
               Pesan Sekarang
@@ -44,7 +44,7 @@ export default function TokoPage() {
               <li>✔ Mendukung pencegahan stunting</li>
             </ul>
 
-            <strong>Rp 7.200 / pcs</strong>
+            <strong>Rp 7.500 / pcs</strong>
 
             <button style={{ marginTop: "1rem" }}>
               Pesan Sekarang
