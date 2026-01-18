@@ -1,113 +1,225 @@
-export default function HomePage() {
+"use client";
 
-  console.log(
-    "SUPABASE URL:",
-    process.env.NEXT_PUBLIC_SUPABASE_URL
-  )
+import React from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
+
+export default function HomePage() {
+  const router = useRouter();
+
+  // ================= STYLES =================
+  const cardStyle: React.CSSProperties = {
+    flex: "1 1 250px",
+    backgroundColor: "#fff",
+    padding: 20,
+    borderRadius: 12,
+    boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
+    textAlign: "center",
+    marginBottom: 24,
+  };
+
+  const productCardStyle: React.CSSProperties = {
+    ...cardStyle,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  };
+
+  const gridStyle: React.CSSProperties = {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 24,
+    justifyContent: "center",
+  };
+
+  const buttonStyle: React.CSSProperties = {
+    padding: "14px 28px",
+    borderRadius: 12,
+    border: "none",
+    cursor: "pointer",
+    fontWeight: 600,
+  };
 
   return (
-    <div className="container">
-
+    <div style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 20px" }}>
       {/* ================= HERO ================= */}
-      <section className="hero">
-        <h2>
+      <section
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
+          marginBottom: 60,
+          padding: "80px 20px",
+          backgroundColor: "#a3c939",
+          borderRadius: 20,
+        }}
+      >
+        <h2 style={{ fontSize: "2.2rem", lineHeight: 1.3, marginBottom: 16, color: "#2f7d32" }}>
           Snack Gizi Lokal untuk <br />
           Generasi Bebas Stunting
         </h2>
 
-        <p>
-          GrowBar adalah snack sehat berbasis pangan lokal Indonesia
-          untuk mendukung tumbuh kembang anak dan ibu hamil
-          pada masa emas 1.000 HPK.
+        <p
+          style={{
+            fontSize: 18,
+            lineHeight: 1.6,
+            maxWidth: 600,
+            marginBottom: 32,
+            color: "white",
+            textShadow: "1px 1px 2px rgba(0,0,0,0.2)",
+          }}
+        >
+          GrowBar adalah snack sehat berbasis pangan lokal Indonesia untuk mendukung
+          tumbuh kembang anak dan ibu hamil pada masa emas 1.000 HPK.
         </p>
 
-        <div className="cta">
-          <button>Pesan GrowBar</button>
-          <button className="btn-secondary">
+        <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+          <Link href="/pesan">
+            <button style={{ ...buttonStyle, backgroundColor: "#2f7d32", color: "white" }}>
+              Pesan GrowBar
+            </button>
+          </Link>
+          <button
+            style={{ ...buttonStyle, backgroundColor: "white", color: "#2f7d32" }}
+            onClick={() => router.push("/tracking")}
+          >
             Mulai Tracking
           </button>
         </div>
       </section>
 
       {/* ================= VALUE ================= */}
-      <section className="section">
-        <h3>Mengapa GrowBar?</h3>
-
-        <div className="grid">
-          <div className="card">
-            <h4>🌱 Gizi Lengkap</h4>
-            <p>Protein nabati untuk mendukung tumbuh kembang optimal.</p>
-          </div>
-
-          <div className="card">
-            <h4>🩸 Cegah Stunting</h4>
-            <p>Kaya zat besi & asam folat untuk 1.000 HPK.</p>
-          </div>
-
-          <div className="card">
-            <h4>⚡ Energi Alami</h4>
-            <p>Mengenyangkan tanpa membuat tubuh lemas.</p>
-          </div>
-
-          <div className="card">
-            <h4>✅ Aman & Lokal</h4>
-            <p>Berbahan pangan lokal, aman dikonsumsi rutin.</p>
-          </div>
+      <section style={{ marginBottom: 60 }}>
+        <h3 style={{ textAlign: "center", marginBottom: 24 }}>Mengapa GrowBar?</h3>
+        <div style={gridStyle}>
+          <div style={cardStyle}><h4>🌱 Gizi Lengkap</h4><p>Protein nabati untuk tumbuh kembang optimal.</p></div>
+          <div style={cardStyle}><h4>🩸 Cegah Stunting</h4><p>Kaya zat besi & asam folat.</p></div>
+          <div style={cardStyle}><h4>⚡ Energi Alami</h4><p>Mengenyangkan tanpa lemas.</p></div>
+          <div style={cardStyle}><h4>✅ Aman & Lokal</h4><p>Pangan lokal, aman dikonsumsi rutin.</p></div>
+          <div style={cardStyle}><h4>🌿 Ramah Lingkungan</h4><p>Kemasan minimalis & berkelanjutan.</p></div>
+          <div style={cardStyle}><h4>👩‍👧 Mendukung Keluarga</h4><p>Nutrisi ibu & anak.</p></div>
         </div>
       </section>
 
       {/* ================= PRODUK ================= */}
-      <section className="section">
-        <h3>Varian Produk GrowBar</h3>
+<section style={{ marginBottom: 60 }}>
+  <h3 style={{ textAlign: "center", marginBottom: 24 }}>
+    Varian Produk GrowBar
+  </h3>
 
-        <div className="grid">
-          <div className="card product-card">
-            <div className="product-icon">🍌</div>
-            <h4>GrowBar Pisang</h4>
-            <p>Padat energi & serat alami dari pisang lokal pilihan.</p>
-            <button>Lihat Produk</button>
-          </div>
+  <div style={gridStyle}>
+    {/* PRODUK PISANG */}
+    <div style={productCardStyle}>
+      <img
+        src="/produk/growbar-pisang.png.png"
+        alt="GrowBar Pisang"
+        style={{
+          width: "100%",
+          maxWidth: 280,
+          height: "auto",
+          objectFit: "contain",
+          marginBottom: 12,
+        }}
+      />
+      <h4>GrowBar Pisang</h4>
+      <p>Padat energi & serat alami dari pisang lokal pilihan.</p>
+      <Link href="/produk/growbar-pisang.png.png">
+        <button
+          style={{
+            ...buttonStyle,
+            backgroundColor: "#2f7d32",
+            color: "white",
+          }}
+        >
+          Lihat Produk
+        </button>
+      </Link>
+    </div>
 
-          <div className="card product-card">
-            <div className="product-icon">🌾</div>
-            <h4>GrowBar Kacang Hijau</h4>
-            <p>Tinggi protein & zat besi untuk pencegahan stunting.</p>
-            <button>Lihat Produk</button>
-          </div>
-        </div>
-      </section>
+    {/* PRODUK KACANG HIJAU */}
+    <div style={productCardStyle}>
+      <img
+        src="/produk/growbar-kacang-hijau.png.png"
+        alt="GrowBar Kacang Hijau"
+        style={{
+          width: "100%",
+          maxWidth: 280,
+          height: "auto",
+          objectFit: "contain",
+          marginBottom: 12,
+        }}
+      />
+      <h4>GrowBar Kacang Hijau</h4>
+      <p>Tinggi protein & zat besi untuk pencegahan stunting.</p>
+      <Link href="/produk/growbar-kacang-hijau.png.png">
+        <button
+          style={{
+            ...buttonStyle,
+            backgroundColor: "#2f7d32",
+            color: "white",
+          }}
+        >
+          Lihat Produk
+        </button>
+      </Link>
+    </div>
+  </div>
+</section>
+
 
       {/* ================= FITUR APP ================= */}
-      <section className="section">
-        <h3>Fitur Aplikasi GrowBar</h3>
+      <section style={{ marginBottom: 60 }}>
+        <h3 style={{ textAlign: "center", marginBottom: 24 }}>Fitur Aplikasi GrowBar</h3>
 
-        <div className="grid">
-          <div className="card">
+        <div style={gridStyle}>
+          <div style={cardStyle}>
             <h4>📊 Tracking Gizi</h4>
-            <p>Pantau asupan gizi harian anak dan ibu hamil.</p>
-            <button>Mulai Tracking</button>
+            <p>Pantau asupan gizi harian.</p>
+            <button
+              style={{ ...buttonStyle, backgroundColor: "#2f7d32", color: "white" }}
+              onClick={() => router.push("/tracking")}
+            >
+              Mulai Tracking
+            </button>
           </div>
 
-          <div className="card">
+          <div style={cardStyle}>
             <h4>⏰ Reminder Konsumsi</h4>
-            <p>Pengingat pintar agar konsumsi tidak terlewat.</p>
-            <button>Atur Reminder</button>
+            <p>Pengingat pintar konsumsi.</p>
+            <button
+              style={{ ...buttonStyle, backgroundColor: "#2f7d32", color: "white" }}
+              onClick={() => alert("Fitur ini masih dalam pengembangan 😎")}
+            >
+              Atur Reminder
+            </button>
           </div>
 
-          <div className="card">
+          <div style={cardStyle}>
             <h4>📚 Edukasi Stunting</h4>
-            <p>Materi edukasi gizi & 1.000 HPK.</p>
-            <button>Belajar Sekarang</button>
+            <p>Materi gizi & 1.000 HPK.</p>
+            <button
+              style={{ ...buttonStyle, backgroundColor: "#2f7d32", color: "white" }}
+              onClick={() => alert("Fitur ini masih dalam pengembangan 😎")}
+            >
+              Belajar Sekarang
+            </button>
           </div>
 
-          <div className="card">
+          <div style={cardStyle}>
             <h4>👩‍⚕️ Konsultasi Ahli</h4>
-            <p>Konsultasi dengan ahli gizi secara online.</p>
-            <button>Konsultasi</button>
+            <p>Konsultasi online.</p>
+            <button
+              style={{ ...buttonStyle, backgroundColor: "#2f7d32", color: "white" }}
+              onClick={() => alert("Fitur ini masih dalam pengembangan 😎")}
+            >
+              Konsultasi
+            </button>
           </div>
         </div>
       </section>
-
     </div>
-  )
+  );
 }
